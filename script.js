@@ -1,32 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const scrollContainer = document.querySelector(".scroll-container");
-  let isMouseDown = false;
-  let startX;
-  let scrollLeft;
+  const scrollContainers = document.querySelectorAll(".scroll-container");
 
-  scrollContainer.addEventListener("mousedown", (e) => {
-    isMouseDown = true;
-    startX = e.clientX;
-    scrollLeft = scrollContainer.scrollLeft;
-  });
+  scrollContainers.forEach((scrollContainer) => {
+    let isMouseDown = false;
+    let startX;
+    let scrollLeft;
 
-  scrollContainer.addEventListener("mousemove", (e) => {
-    if (!isMouseDown) return;
-    const x = (e.clientX - startX) * 3; // Adjust the multiplier for smoother scrolling
-    scrollContainer.scrollLeft = scrollLeft - x;
-  });
+    scrollContainer.addEventListener("mousedown", (e) => {
+      isMouseDown = true;
+      startX = e.clientX;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
 
-  document.addEventListener("mouseup", () => {
-    isMouseDown = false;
-  });
+    scrollContainer.addEventListener("mousemove", (e) => {
+      if (!isMouseDown) return;
+      const x = (e.clientX - startX) * 3; // Adjust the multiplier for smoother scrolling
+      scrollContainer.scrollLeft = scrollLeft - x;
+    });
 
-  // เมื่อสกอร์สุดในเนื้อหาถึงขอบเขต
-  scrollContainer.addEventListener("scroll", () => {
-    const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-    if (scrollContainer.scrollLeft === maxScroll) {
-      setTimeout(() => {
-        scrollContainer.scrollLeft = 0;
-      }, 100000); // รอ 1 วินาทีก่อนวนกลับ
-    }
+    document.addEventListener("mouseup", () => {
+      isMouseDown = false;
+    });
+
+    scrollContainer.addEventListener("scroll", () => {
+      const maxScroll =
+        scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      if (scrollContainer.scrollLeft === maxScroll) {
+        setTimeout(() => {
+          scrollContainer.scrollLeft = 0;
+        }, 1000); // Wait 1 second before scrolling back
+      }
+    });
   });
 });
