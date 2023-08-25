@@ -25,7 +25,7 @@
   }
 
   .book-main {
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 70% 30%;
   }
   .grid--footer {
     gap: 2.4rem 1rem;

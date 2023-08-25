@@ -450,7 +450,7 @@ h4 {
   display: grid;
   align-items: start;
   gap: 1rem;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 80% 20%;
 }
 
 .content-left {
