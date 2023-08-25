@@ -1,4 +1,10 @@
-@media (max-width: 1024px) {
+@media (max-width: 1310px) {
+  .book-main {
+    grid-template-columns: 75% 25%;
+  }
+}
+
+@media (max-width: 1070px) {
   html {
     font-size: 56.25%;
   }
@@ -33,7 +39,7 @@
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 500px) {
   html {
     font-size: 50%;
   }
