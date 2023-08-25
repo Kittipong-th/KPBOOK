@@ -64,6 +64,7 @@ allLinks.forEach(function (link) {
     // scroll to other links
     if (href !== "#" && href.startsWith("#")) {
       const sectionEl = document.querySelector(href);
+
       // console.log(sectionEl); #get in click section on top
       sectionEl.scrollIntoView({
         behavior: "smooth",
@@ -85,7 +86,7 @@ const obs = new IntersectionObserver(
     //In the viewport
     root: null,
     threshold: 0,
-    rootMargin: "-80px",
+    rootMargin: "-120px",
   }
 );
 obs.observe(sectionHeroEl);
