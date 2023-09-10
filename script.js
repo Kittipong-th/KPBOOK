@@ -49,10 +49,11 @@ document.addEventListener("DOMContentLoaded", function () {
 const allLinks = document.querySelectorAll("a:link");
 allLinks.forEach(function (link) {
   link.addEventListener("click", function (e) {
-    // console.log(e); #pointer for each event
-    e.preventDefault();
     const href = link.getAttribute("href");
-    // console.log(href); #get(id) #,#how
+    if (href && href.startsWith("mailto:")) {
+      return;
+    }
+    e.preventDefault();
 
     // scroll back to top
     if (href === "#")
@@ -64,8 +65,6 @@ allLinks.forEach(function (link) {
     // scroll to other links
     if (href !== "#" && href.startsWith("#")) {
       const sectionEl = document.querySelector(href);
-
-      // console.log(sectionEl); #get in click section on top
       sectionEl.scrollIntoView({
         behavior: "smooth",
       });
@@ -73,6 +72,7 @@ allLinks.forEach(function (link) {
   });
 });
 
+//Sticky navigation bar
 const sectionHeroEl = document.querySelector(".hero-section");
 console.log(sectionHeroEl);
 const obs = new IntersectionObserver(
@@ -90,3 +90,10 @@ const obs = new IntersectionObserver(
   }
 );
 obs.observe(sectionHeroEl);
+
+//current date
+const currentDay = document.querySelectorAll(".date-detail");
+let date = new Date().toUTCString().slice(5, 16);
+currentDay.forEach((element) => {
+  element.innerHTML = date;
+});
